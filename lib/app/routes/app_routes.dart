@@ -5,4 +5,5 @@ abstract class AppRoutes {
   static const String landing = 'landing';
   static const String order = 'order';
   static const String home = 'home';
+  static const String profile = 'profile';
 }

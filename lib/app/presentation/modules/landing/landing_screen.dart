@@ -1,24 +1,27 @@
+import 'package:easy_flutter_boilerplate/app/core/services/app_service.dart';
+import 'package:easy_flutter_boilerplate/app/routes/app_routes.dart';
 import 'package:flutter/material.dart';
-import 'package:easy_flutter_boilerplate/app/core/base/app_state.dart';
-import 'package:easy_flutter_boilerplate/app/presentation/modules/home/home_screen.dart';
-import 'package:easy_flutter_boilerplate/app/presentation/modules/landing/controllers/landing_controller.dart';
-import 'package:easy_flutter_boilerplate/app/presentation/modules/order/order_screen.dart';
-import 'package:easy_flutter_boilerplate/app/presentation/modules/profile/profile_screen.dart';
-import 'package:easy_flutter_boilerplate/app/presentation/widget/bottom_navbar/bottom_navbar.dart';
+import '/app/core/base/screen_state.dart';
+import '/app/presentation/modules/home/home_screen.dart';
+import '/app/presentation/modules/landing/controllers/landing_controller.dart';
+import '/app/presentation/modules/order/order_screen.dart';
+import '/app/presentation/modules/profile/profile_screen.dart';
+import '/app/presentation/widget/bottom_navbar/bottom_navbar.dart';
 
 class LandingScreen extends StatefulWidget {
   const LandingScreen({
-    // required this.child,
     super.key,
   });
-
-  // final StatefulNavigationShell child;
 
   @override
   State<LandingScreen> createState() => _LandingScreenState();
 }
 
-class _LandingScreenState extends AppState<LandingScreen, LandingController> {
+class _LandingScreenState
+    extends ScreenState<LandingScreen, LandingController> {
+  @override
+  String? get routeName => AppRoutes.landing;
+
   @override
   Widget? get bottomNavigationBar => BottomNavBar(
         controller: controller.navController,

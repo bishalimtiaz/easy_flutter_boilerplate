@@ -1,7 +1,8 @@
+import 'package:easy_flutter_boilerplate/app/core/base/screen_state.dart';
+import 'package:easy_flutter_boilerplate/app/routes/app_routes.dart';
 import 'package:flutter/material.dart';
-import 'package:easy_flutter_boilerplate/app/core/base/app_state.dart';
-import 'package:easy_flutter_boilerplate/app/presentation/modules/profile/controllers/profile_controller.dart';
-import 'package:easy_flutter_boilerplate/app/routes/app_router.dart';
+import '/app/presentation/modules/profile/controllers/profile_controller.dart';
+import '/app/routes/app_router.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -10,7 +11,11 @@ class ProfileScreen extends StatefulWidget {
   State<ProfileScreen> createState() => _ProfileScreenState();
 }
 
-class _ProfileScreenState extends AppState<ProfileScreen, ProfileController> {
+class _ProfileScreenState
+    extends ScreenState<ProfileScreen, ProfileController> {
+  @override
+  String? get routeName => AppRoutes.profile;
+
   @override
   Widget buildScreen(BuildContext context) {
     return Center(
@@ -21,5 +26,17 @@ class _ProfileScreenState extends AppState<ProfileScreen, ProfileController> {
         child: Text("Profile Screen"),
       ),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    print("inisState ProfileScreen");
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    print("dispose ProfileScreen");
   }
 }

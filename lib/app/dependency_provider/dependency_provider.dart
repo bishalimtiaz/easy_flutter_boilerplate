@@ -1,3 +1,5 @@
+import 'package:easy_flutter_boilerplate/app/routes/route_bindings/binding.dart';
+import 'package:easy_flutter_boilerplate/app/routes/route_bindings/route_binding.dart';
 import 'package:get_it/get_it.dart';
 import 'package:easy_flutter_boilerplate/app/core/utils/log.dart';
 import 'package:easy_flutter_boilerplate/app/dependency_provider/data_source_provider.dart';
@@ -55,8 +57,12 @@ class DependencyProvider {
   }
 
   void removeScreenController<T extends Object>() {
-    if (locator.isRegistered<T>()) {
-      locator.unregister<T>();
+    try {
+      if (locator.isRegistered<T>()) {
+        locator.unregister<T>();
+      }
+    } catch (e) {
+      Log.error("Error removing Screen Controller: $e");
     }
   }
 
@@ -65,6 +71,15 @@ class DependencyProvider {
   ) {
     if (!locator.isRegistered<T>()) {
       locator.registerFactory(controller);
+    }
+  }
+
+  bool canDispose(String? routeName) {
+    Binding? binding = routeBindings[routeName]?.call();
+    if (binding != null && !binding.isSingleInstance) {
+      return true;
+    } else {
+      return false;
     }
   }
 }
