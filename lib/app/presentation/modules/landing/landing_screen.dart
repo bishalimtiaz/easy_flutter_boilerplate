@@ -1,3 +1,4 @@
+import 'package:easy_flutter_boilerplate/app/core/base/observer.dart';
 import 'package:easy_flutter_boilerplate/app/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import '/app/core/base/screen_state.dart';
@@ -29,11 +30,12 @@ class _LandingScreenState
   @override
   @override
   Widget buildScreen(BuildContext context) {
-    return ValueListenableBuilder<int>(
-        valueListenable: controller.navController.selectedIndex,
-        builder: (BuildContext context, int index, _) {
-          return _getBottomNavbarScreen(index);
-        });
+    return Observer<int>(
+      observable: controller.navController.selectedIndex,
+      childBuilder: (BuildContext context, int index, _) {
+        return _getBottomNavbarScreen(index);
+      },
+    );
   }
 
   Widget _getBottomNavbarScreen(int index) {

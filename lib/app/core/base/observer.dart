@@ -1,15 +1,9 @@
+import 'package:easy_flutter_boilerplate/app/core/base/notifier.dart';
 import 'package:flutter/material.dart';
-import '/app/core/base/observable.dart';
 
-typedef ObservableBuilder<T> = Widget Function(
-  BuildContext context,
-  T value,
-  Widget? child,
-);
-
-class Observer<T> extends ListenableBuilder {
+final class Observer<T extends Object> extends ListenableBuilder {
   final ObservableBuilder<T> childBuilder;
-  final Observable<T> observable;
+  final Notifier observable;
 
   Observer({
     required this.observable,

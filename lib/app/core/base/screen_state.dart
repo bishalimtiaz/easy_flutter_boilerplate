@@ -4,8 +4,6 @@ import '/app/core/base/base_state.dart';
 
 abstract class ScreenState<T extends StatefulWidget, C extends BaseController>
     extends BaseState<T, C> {
-  String? get routeName;
-
   Widget buildScreen(BuildContext context);
 
   Color? get backgroundColor => null;

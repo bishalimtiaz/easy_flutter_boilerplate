@@ -1,10 +1,11 @@
-import 'package:flutter/material.dart';
+import 'package:easy_flutter_boilerplate/app/core/base/notifier.dart';
 
-class Observable<T> extends ChangeNotifier {
+interface class Observable<T extends Object> extends Notifier {
   T _value;
 
   Observable(this._value);
 
+  @override
   T get value => _value;
 
   set value(T newValue) {
