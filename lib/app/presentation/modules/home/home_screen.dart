@@ -5,7 +5,6 @@ import 'package:easy_flutter_boilerplate/app/presentation/widget/test_list.dart'
 import 'package:easy_flutter_boilerplate/app/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import '/app/presentation/modules/home/controllers/home_controller.dart';
-import '/app/routes/app_router.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -28,7 +27,7 @@ class _HomeScreenState extends ScreenState<HomeScreen, HomeController> {
             observable: controller.count,
             childBuilder: (BuildContext context, bool value, _) {
               return Container(
-                color:  value ? Colors.green : Colors.white,
+                color: value ? Colors.green : Colors.white,
                 child: Text("${value}"),
               );
             },
