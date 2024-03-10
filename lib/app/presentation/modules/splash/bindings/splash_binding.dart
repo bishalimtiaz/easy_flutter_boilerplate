@@ -13,6 +13,6 @@ class SplashBinding extends Binding {
 
   @override
   Future<void> removeDependencies() async {
-    DependencyProvider().removeScreenController<SplashController>();
+    DependencyProvider().removeController<SplashController>();
   }
 }

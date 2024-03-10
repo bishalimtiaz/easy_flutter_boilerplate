@@ -13,6 +13,6 @@ class ProfileBinding extends Binding {
 
   @override
   Future<void> removeDependencies() async {
-    DependencyProvider().removeScreenController<ProfileController>();
+    DependencyProvider().removeController<ProfileController>();
   }
 }

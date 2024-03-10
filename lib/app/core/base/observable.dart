@@ -1,6 +1,6 @@
 import 'package:easy_flutter_boilerplate/app/core/base/notifier.dart';
 
-interface class Observable<T extends Object> extends Notifier {
+interface class Observable<T extends Object?> extends Notifier {
   T _value;
 
   Observable(this._value);

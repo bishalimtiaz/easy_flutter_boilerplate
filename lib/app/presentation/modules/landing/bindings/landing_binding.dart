@@ -19,7 +19,7 @@ class LandingBinding extends Binding {
 
   @override
   Future<void> removeDependencies() async {
-    DependencyProvider().removeScreenController<LandingController>();
+    DependencyProvider().removeController<LandingController>();
 
     HomeBinding().removeDependencies();
     OrderBinding().removeDependencies();

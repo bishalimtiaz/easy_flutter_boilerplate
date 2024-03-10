@@ -16,6 +16,6 @@ class OrderBinding extends Binding {
 
   @override
   Future<void> removeDependencies() async {
-    DependencyProvider().removeScreenController<OrderController>();
+    DependencyProvider().removeController<OrderController>();
   }
 }

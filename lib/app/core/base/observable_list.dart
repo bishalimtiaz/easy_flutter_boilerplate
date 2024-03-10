@@ -2,7 +2,7 @@ import 'package:easy_flutter_boilerplate/app/core/base/notifier.dart';
 import 'package:collection/collection.dart';
 
 /// Class representing an observable list that notifies listeners about changes.
-interface class ObservableList<T extends Object> extends Notifier {
+interface class ObservableList<T extends Object?> extends Notifier {
   ObservableList._(this._value);
 
   factory ObservableList.filled(int length, T fill, {bool growable = false}) {
@@ -39,7 +39,14 @@ interface class ObservableList<T extends Object> extends Notifier {
   }
 
   /// The internal list that stores the data.
-  final List<T> _value;
+  List<T> _value;
+
+  set value(List<T> newValue) {
+    if (_value != newValue) {
+      _value = newValue;
+      notifyListeners();
+    }
+  }
 
   /// Returns a read-only view of the current list data.
   @override

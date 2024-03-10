@@ -4,9 +4,6 @@ import 'package:easy_flutter_boilerplate/app/routes/route_bindings/binding.dart'
 
 class HomeBinding extends Binding {
   @override
-  bool get isSingleInstance => false;
-
-  @override
   Future<void> addDependencies() async {
     DependencyProvider().provideScreenController<HomeController>(
       () => HomeController(),
@@ -16,6 +13,6 @@ class HomeBinding extends Binding {
 
   @override
   Future<void> removeDependencies() async {
-    DependencyProvider().removeScreenController<HomeController>();
+    DependencyProvider().removeController<HomeController>();
   }
 }

@@ -27,12 +27,6 @@ class DependencyProvider {
     locator.registerLazySingleton(controller);
   }
 
-  Future<void> removeSharedController<T extends Object>(
-    T Function() controller,
-  ) async {
-    locator.unregister<T>();
-  }
-
   void provideScreenController<T extends Object>(
     T Function() controller, {
     required bool isSingleInstance,
@@ -56,7 +50,7 @@ class DependencyProvider {
     }
   }
 
-  void removeScreenController<T extends Object>() {
+  void removeController<T extends Object>() {
     try {
       if (locator.isRegistered<T>()) {
         locator.unregister<T>();

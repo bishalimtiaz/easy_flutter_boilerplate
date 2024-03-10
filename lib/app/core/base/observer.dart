@@ -1,7 +1,7 @@
 import 'package:easy_flutter_boilerplate/app/core/base/notifier.dart';
 import 'package:flutter/material.dart';
 
-final class Observer<T extends Object> extends ListenableBuilder {
+final class Observer<T extends Object?> extends ListenableBuilder {
   final ObservableBuilder<T> childBuilder;
   final Notifier observable;
 
