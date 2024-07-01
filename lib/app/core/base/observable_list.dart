@@ -14,7 +14,7 @@ interface class ObservableList<T extends Object?> extends Notifier {
     return ObservableList<T>._(List<T>.empty(growable: growable));
   }
 
-  factory ObservableList.from(Iterable elements, {bool growable = true}) {
+  factory ObservableList.from(Iterable<T> elements, {bool growable = true}) {
     return ObservableList<T>._(List<T>.from(elements, growable: growable));
   }
 
@@ -23,10 +23,10 @@ interface class ObservableList<T extends Object?> extends Notifier {
   }
 
   factory ObservableList.generate(
-    int length,
-    T Function(int index) generator, {
-    bool growable = true,
-  }) {
+      int length,
+      T Function(int index) generator, {
+        bool growable = true,
+      }) {
     return ObservableList<T>._(List<T>.generate(
       length,
       generator,
@@ -34,7 +34,7 @@ interface class ObservableList<T extends Object?> extends Notifier {
     ));
   }
 
-  factory ObservableList.unmodifiable(Iterable elements) {
+  factory ObservableList.unmodifiable(Iterable<T> elements) {
     return ObservableList<T>._(List<T>.unmodifiable(elements));
   }
 
@@ -42,15 +42,15 @@ interface class ObservableList<T extends Object?> extends Notifier {
   List<T> _value;
 
   set value(List<T> newValue) {
-    if (_value != newValue) {
-      _value = newValue;
+    if (!const IterableEquality().equals(_value, newValue)) { // Added deep comparison
+      _value = List<T>.from(newValue);  // Make a copy to avoid unintended side effects
       notifyListeners();
     }
   }
 
   /// Returns a read-only view of the current list data.
   @override
-  List<T> get value => _value;
+  List<T> get value => List<T>.unmodifiable(_value);
 
   /// Adds an item to the list and notifies listeners.
   void add(T item) {
@@ -64,7 +64,8 @@ interface class ObservableList<T extends Object?> extends Notifier {
     notifyListeners();
   }
 
-  /// Removes the first occurrence of an item from the list and notifies listeners.
+  ///Removes the first occurrence of an item from the list
+  ///and notifies listeners.
   /// Returns true if the item was found and removed, false otherwise.
   bool remove(T item) {
     bool result = _value.remove(item);
@@ -74,7 +75,8 @@ interface class ObservableList<T extends Object?> extends Notifier {
     return result;
   }
 
-  /// Removes the item at the specified index from the list and notifies listeners.
+  /// Removes the item at the specified index from the list and notifies
+  /// listeners.
   /// Throws a RangeError if the index is out of bounds.
   T removeAt(int index) {
     if (index < 0 || index >= _value.length) {
@@ -91,7 +93,8 @@ interface class ObservableList<T extends Object?> extends Notifier {
     notifyListeners();
   }
 
-  /// Replaces the item at the specified index with a new item and notifies listeners.
+  /// Replaces the item at the specified index with a new item and notifies
+  /// listeners.
   /// Throws a RangeError if the index is out of bounds.
   void replaceAt(int index, T newItem) {
     if (index < 0 || index >= _value.length) {
@@ -111,23 +114,29 @@ interface class ObservableList<T extends Object?> extends Notifier {
     notifyListeners();
   }
 
-  /// Performs a batch of updates on the list and notifies listeners once at the end.
+  /// Performs a batch of updates on the list and notifies listeners once at
+  /// the end.
   void batchUpdate(void Function(List<T>) updates) {
     updates(_value);
     notifyListeners();
   }
 
   /// Compares this list with another object for equality.
-  /// Returns true if the other object is also an ObservableList with the same elements in the same order.
-  /// o enable accurate comparison of ObservableList instances, ensuring they are considered equal only
-  /// when they contain the same elements in the same order, regardless of their memory address. Deep Comparison.
+  /// Returns true if the other object is also an ObservableList with the same
+  /// elements in the same order.
+  /// enable accurate comparison of ObservableList instances, ensuring they are
+  /// considered equal only
+  /// when they contain the same elements in the same order, regardless of their
+  /// memory address. Deep Comparison.
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is ObservableList<T> &&
-          const IterableEquality().equals(_value, other._value);
+          other is ObservableList<T> &&
+              const IterableEquality<dynamic>().equals(_value, other._value);
 
-  /// Calculates the hash code for this list based on the hash codes of its elements.
+  /// Calculates the hash code for this list based on the hash codes of its
+  /// elements.
   @override
-  int get hashCode => _value.map((t) => t.hashCode).reduce((a, b) => a ^ b);
+  int get hashCode =>
+      _value.map((T t) => t.hashCode).reduce((int a, int b) => a ^ b);
 }

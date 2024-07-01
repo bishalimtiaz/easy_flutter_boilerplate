@@ -60,7 +60,7 @@ class DependencyProvider {
     }
   }
 
-  void provideControllerDependency<T extends Object>(
+  void provideController<T extends Object>(
     T Function() controller,
   ) {
     if (!locator.isRegistered<T>()) {

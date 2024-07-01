@@ -7,5 +7,5 @@ typedef ObservableBuilder<T> = Widget Function(
 );
 
 abstract class Notifier extends ChangeNotifier {
-  get value;
+  dynamic get value;
 }

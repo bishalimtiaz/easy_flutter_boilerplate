@@ -10,12 +10,12 @@ class ScreenBuilder<T> extends GoRoute {
     required this.screenBuilder,
     super.parentNavigatorKey,
   }) : super(
-          pageBuilder: (BuildContext context, GoRouterState state) {
-            return MaterialPage<T>(
-              name: name,
-              key: state.pageKey,
-              child: screenBuilder.call(context, state),
-            );
-          },
-        );
+    pageBuilder: (BuildContext context, GoRouterState state) {
+      return MaterialPage<T>(
+        name: name,
+        key: state.pageKey,
+        child: screenBuilder.call(context, state),
+      );
+    },
+  );
 }
