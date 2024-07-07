@@ -18,7 +18,7 @@ abstract class _Path {
 
 final GoRouter appRouter = GoRouter(
   navigatorKey: NavigationHelper().parentNavigatorKey,
-  initialLocation: _Path.landing,
+  initialLocation: _Path.splash,
   observers: <NavigatorObserver>[GoRouterObserver()],
   routes: <RouteBase>[
     ScreenBuilder<SplashScreen>(
