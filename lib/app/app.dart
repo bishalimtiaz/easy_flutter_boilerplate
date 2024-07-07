@@ -1,3 +1,4 @@
+import 'package:easy_flutter_boilerplate/app/core/styles/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_flutter_boilerplate/app/routes/app_router.dart';
 
@@ -8,9 +9,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       routerConfig: appRouter,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: themeData,
     );
   }
 }
