@@ -23,20 +23,9 @@ class _ProfileScreenState
         onTap: () {
           appRouter.pop();
         },
-        child: Text("Profile Screen"),
+        child: const Text("Profile Screen"),
       ),
     );
   }
 
-  @override
-  void initState() {
-    super.initState();
-    print("inisState ProfileScreen");
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    print("dispose ProfileScreen");
-  }
 }

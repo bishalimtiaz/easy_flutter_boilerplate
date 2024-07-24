@@ -1,5 +1,5 @@
 abstract class Binding {
-  bool get isSingleInstance => true;
+  bool get isSingleInstance => false;
 
   Future<void> addDependencies();
 

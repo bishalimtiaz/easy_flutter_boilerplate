@@ -1,1 +1,1 @@
-///place shared controller that will be shared within modules or controllers
+//place shared controller that will be shared within modules or controllers

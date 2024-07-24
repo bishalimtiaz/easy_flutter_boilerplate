@@ -6,7 +6,7 @@ class HomeBinding extends Binding {
 
   @override
   // TODO: implement isSingleInstance
-  bool get isSingleInstance => false;
+  bool get isSingleInstance => true;
   @override
   Future<void> addDependencies() async {
     DependencyProvider().provideScreenController<HomeController>(

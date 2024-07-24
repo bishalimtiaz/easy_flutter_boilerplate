@@ -22,7 +22,7 @@ class _OrderScreenState extends ScreenState<OrderScreen, OrderController> {
         onTap: () {
           appRouter.pop();
         },
-        child: Text("Order Screen"),
+        child: const Text("Order Screen"),
       ),
     );
   }

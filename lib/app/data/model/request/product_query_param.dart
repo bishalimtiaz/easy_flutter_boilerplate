@@ -1,1 +1,1 @@
-///create request model like queryParam or requestBody
+//create request model like queryParam or requestBody

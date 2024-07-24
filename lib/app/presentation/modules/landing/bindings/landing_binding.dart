@@ -1,3 +1,4 @@
+import 'package:easy_flutter_boilerplate/app/core/utils/log.dart';
 import 'package:easy_flutter_boilerplate/app/dependency_provider/dependency_provider.dart';
 import 'package:easy_flutter_boilerplate/app/presentation/modules/home/bindings/home_binding.dart';
 import 'package:easy_flutter_boilerplate/app/presentation/modules/landing/controllers/landing_controller.dart';
