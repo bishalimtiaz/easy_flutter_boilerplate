@@ -14,7 +14,7 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState
     extends ScreenState<ProfileScreen, ProfileController> {
   @override
-  String? get routeName => AppRoutes.profile;
+  String? get routeName => AppRoutes.profile.name;
 
   @override
   Widget buildScreen(BuildContext context) {

@@ -12,7 +12,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends ScreenState<HomeScreen, HomeController> {
   @override
-  String? get routeName => AppRoutes.home;
+  String? get routeName => AppRoutes.home.name;
 
   @override
   Widget buildScreen(BuildContext context) {

@@ -13,7 +13,7 @@ class OrderScreen extends StatefulWidget {
 
 class _OrderScreenState extends ScreenState<OrderScreen, OrderController> {
   @override
-  String? get routeName => AppRoutes.order;
+  String? get routeName => AppRoutes.order.name;
 
   @override
   Widget buildScreen(BuildContext context) {

@@ -9,9 +9,9 @@ import 'package:easy_flutter_boilerplate/app/routes/route_bindings/binding.dart'
 typedef Binder = Binding Function();
 
 final Map<String, Binder> routeBindings = <String, Binder>{
-  AppRoutes.splash: () => SplashBinding(),
-  AppRoutes.landing: () => LandingBinding(),
-  AppRoutes.order: () => OrderBinding(),
-  AppRoutes.home: () => HomeBinding(),
-  AppRoutes.profile: () => ProfileBinding(),
+  AppRoutes.splash.name: () => SplashBinding(),
+  AppRoutes.landing.name: () => LandingBinding(),
+  AppRoutes.order.name: () => OrderBinding(),
+  AppRoutes.home.name: () => HomeBinding(),
+  AppRoutes.profile.name: () => ProfileBinding(),
 };

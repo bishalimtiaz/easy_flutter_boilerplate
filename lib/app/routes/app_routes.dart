@@ -1,9 +1,19 @@
+final class Route {
+  final String name;
+  final String path;
+
+  const Route({
+    required this.name,
+    required this.path,
+  });
+}
+
 abstract class AppRoutes {
   AppRoutes._();
 
-  static const String splash = 'splash';
-  static const String landing = 'landing';
-  static const String order = 'order';
-  static const String home = 'home';
-  static const String profile = 'profile';
+  static const Route splash = Route(name: 'splash', path: '/splash');
+  static const Route landing = Route(name: 'landing', path: '/landing');
+  static const Route order = Route(name: 'order', path: '/order');
+  static const Route home = Route(name: 'home', path: '/home');
+  static const Route profile = Route(name: 'profile', path: '/profile');
 }

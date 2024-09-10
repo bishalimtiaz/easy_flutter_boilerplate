@@ -9,42 +9,36 @@ import 'package:easy_flutter_boilerplate/app/routes/app_routes.dart';
 import 'package:easy_flutter_boilerplate/app/routes/go_router_observer.dart';
 import 'package:easy_flutter_boilerplate/app/routes/navigation_helper.dart';
 
-abstract class _Path {
-  static const String splash = '/splash';
-  static const String landing = '/landing';
-  static const String order = '/order';
-  static const String home = '/home';
-}
 
 final GoRouter appRouter = GoRouter(
   navigatorKey: NavigationHelper().parentNavigatorKey,
-  initialLocation: _Path.splash,
+  initialLocation: AppRoutes.splash.path,
   observers: <NavigatorObserver>[GoRouterObserver()],
   routes: <RouteBase>[
     ScreenBuilder<SplashScreen>(
-      path: _Path.splash,
-      name: AppRoutes.splash,
+      path: AppRoutes.splash.path,
+      name: AppRoutes.splash.name,
       screenBuilder: (BuildContext context, GoRouterState state) {
         return const SplashScreen();
       },
     ),
     ScreenBuilder<LandingScreen>(
-      path: _Path.landing,
-      name: AppRoutes.landing,
+      path: AppRoutes.landing.path,
+      name: AppRoutes.landing.name,
       screenBuilder: (BuildContext context, GoRouterState state) {
         return const LandingScreen();
       },
     ),
     ScreenBuilder<OrderScreen>(
-      path: _Path.order,
-      name: AppRoutes.order,
+      path: AppRoutes.order.path,
+      name: AppRoutes.order.name,
       screenBuilder: (BuildContext context, GoRouterState state) {
         return const OrderScreen();
       },
     ),
     ScreenBuilder<HomeScreen>(
-      path: _Path.home,
-      name: AppRoutes.home,
+      path: AppRoutes.home.path,
+      name: AppRoutes.home.name,
       screenBuilder: (BuildContext context, GoRouterState state) {
         return const HomeScreen();
       },

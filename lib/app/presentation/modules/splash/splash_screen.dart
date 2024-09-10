@@ -13,7 +13,7 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends ScreenState<SplashScreen, SplashController> {
   @override
-  String? get routeName => AppRoutes.splash;
+  String? get routeName => AppRoutes.splash.name;
 
   @override
   Widget buildScreen(BuildContext context) {

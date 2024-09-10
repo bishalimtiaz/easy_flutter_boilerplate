@@ -20,7 +20,7 @@ class LandingScreen extends StatefulWidget {
 class _LandingScreenState
     extends ScreenState<LandingScreen, LandingController> {
   @override
-  String? get routeName => AppRoutes.landing;
+  String? get routeName => AppRoutes.landing.name;
 
   @override
   Widget? get bottomNavigationBar => BottomNavBar(
