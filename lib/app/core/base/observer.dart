@@ -1,13 +1,12 @@
 import 'package:easy_flutter_boilerplate/app/core/base/notifier.dart';
 import 'package:flutter/material.dart';
 
-final class Observer<T extends Object?> extends ListenableBuilder {
-  final ObservableBuilder<T> childBuilder;
+final class Observer extends ListenableBuilder {
   final Notifier observable;
 
   Observer({
     required this.observable,
-    required this.childBuilder,
+    required ObservableBuilder builder,
     super.key,
   }) : super(
           listenable: observable,
@@ -16,10 +15,8 @@ final class Observer<T extends Object?> extends ListenableBuilder {
             Widget? child,
           ) {
             // Extract the value from listenable
-            return childBuilder(
+            return builder(
               context,
-              observable.value,
-              child,
             ); // Pass value to builder
           },
         );

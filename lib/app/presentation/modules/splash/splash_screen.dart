@@ -16,9 +16,13 @@ class _SplashScreenState extends ScreenState<SplashScreen, SplashController> {
   String? get routeName => AppRoutes.splash.name;
 
   @override
-  Widget buildScreen(BuildContext context) {
-    return const Center(
-      child: AnimatedHello(),
+  Widget build(BuildContext context) {
+    return const Scaffold(
+      body: SafeArea(
+        child: Center(
+          child: AnimatedHello(),
+        ),
+      ),
     );
   }
 }

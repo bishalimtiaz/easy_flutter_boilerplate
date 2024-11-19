@@ -17,7 +17,7 @@ class _ProfileScreenState
   String? get routeName => AppRoutes.profile.name;
 
   @override
-  Widget buildScreen(BuildContext context) {
+  Widget build(BuildContext context) {
     return Center(
       child: GestureDetector(
         onTap: () {

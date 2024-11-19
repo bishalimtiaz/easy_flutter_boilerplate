@@ -12,11 +12,11 @@ class BottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Observer<int>(
+    return Observer(
       observable: controller.selectedIndex,
-      childBuilder: (BuildContext context, int value, _) {
+      builder: (BuildContext context) {
         return NavigationBar(
-          selectedIndex: value,
+          selectedIndex: controller.selectedIndex.value,
           onDestinationSelected: controller.setSelectedIndex,
           destinations: const [
             NavigationDestination(

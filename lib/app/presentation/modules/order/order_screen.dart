@@ -16,7 +16,7 @@ class _OrderScreenState extends ScreenState<OrderScreen, OrderController> {
   String? get routeName => AppRoutes.order.name;
 
   @override
-  Widget buildScreen(BuildContext context) {
+  Widget build(BuildContext context) {
     return Center(
       child: GestureDetector(
         onTap: () {

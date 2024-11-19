@@ -6,7 +6,6 @@ import '/app/presentation/modules/home/home_screen.dart';
 import '/app/presentation/modules/landing/controllers/landing_controller.dart';
 import '/app/presentation/modules/order/order_screen.dart';
 import '/app/presentation/modules/profile/profile_screen.dart';
-import '/app/presentation/widget/bottom_navbar/bottom_navbar.dart';
 
 class LandingScreen extends StatefulWidget {
   const LandingScreen({
@@ -22,18 +21,18 @@ class _LandingScreenState
   @override
   String? get routeName => AppRoutes.landing.name;
 
-  @override
-  Widget? get bottomNavigationBar => BottomNavBar(
-        controller: controller.navController,
-      );
+  // @override
+  // Widget? get bottomNavigationBar => BottomNavBar(
+  //       controller: controller.navController,
+  //     );
 
   @override
   @override
-  Widget buildScreen(BuildContext context) {
-    return Observer<int>(
+  Widget build(BuildContext context) {
+    return Observer(
       observable: controller.navController.selectedIndex,
-      childBuilder: (BuildContext context, int index, _) {
-        return _getBottomNavbarScreen(index);
+      builder: (BuildContext context) {
+        return _getBottomNavbarScreen(controller.navController.selectedIndex.value);
       },
     );
   }

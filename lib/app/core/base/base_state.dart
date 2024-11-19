@@ -6,7 +6,6 @@ abstract class BaseState<T extends StatefulWidget, C extends BaseController>
     extends State<T> {
   late final C controller;
 
-  String? get routeName;
 
   @override
   void initState() {
@@ -19,9 +18,6 @@ abstract class BaseState<T extends StatefulWidget, C extends BaseController>
   @override
   void dispose() {
     removeListener();
-    if (DependencyProvider().canDispose(routeName)) {
-      controller.onDispose();
-    }
     super.dispose();
   }
 

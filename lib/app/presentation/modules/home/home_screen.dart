@@ -15,9 +15,17 @@ class _HomeScreenState extends ScreenState<HomeScreen, HomeController> {
   String? get routeName => AppRoutes.home.name;
 
   @override
-  Widget buildScreen(BuildContext context) {
-    return const Center(
-      child: Text("Home"),
+  Widget build(BuildContext context) {
+    return ListenableBuilder(
+      listenable: ValueNotifier(1),
+      builder: (BuildContext context, Widget? child) {
+        return const Center(
+          child: Text("Home"),
+        );
+      },
+      child: const Center(
+        child: Text("Home"),
+      ),
     );
   }
 }
