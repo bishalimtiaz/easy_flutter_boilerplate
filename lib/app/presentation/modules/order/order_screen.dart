@@ -3,7 +3,6 @@ import 'package:easy_flutter_boilerplate/app/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '/app/presentation/modules/order/controllers/order_controller.dart';
-import '/app/routes/app_router.dart';
 
 class OrderScreen extends StatefulWidget {
   const OrderScreen({super.key});
@@ -13,7 +12,6 @@ class OrderScreen extends StatefulWidget {
 }
 
 class _OrderScreenState extends ScreenState<OrderScreen, OrderController> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

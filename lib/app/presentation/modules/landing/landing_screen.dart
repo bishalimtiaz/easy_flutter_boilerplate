@@ -1,5 +1,4 @@
 import 'package:easy_flutter_boilerplate/app/core/base/observer.dart';
-import 'package:easy_flutter_boilerplate/app/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import '/app/core/base/screen_state.dart';
 import '/app/presentation/modules/home/home_screen.dart';

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:easy_flutter_boilerplate/app/core/base/screen_builder.dart';
 import 'package:easy_flutter_boilerplate/app/presentation/modules/home/home_screen.dart';
-import 'package:easy_flutter_boilerplate/app/presentation/modules/landing/landing_screen.dart';
 import 'package:easy_flutter_boilerplate/app/presentation/modules/order/order_screen.dart';
 import 'package:easy_flutter_boilerplate/app/presentation/modules/splash/splash_screen.dart';
 import 'package:easy_flutter_boilerplate/app/routes/app_routes.dart';

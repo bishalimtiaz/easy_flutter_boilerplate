@@ -3,7 +3,6 @@ import 'package:easy_flutter_boilerplate/app/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '/app/presentation/modules/profile/controllers/profile_controller.dart';
-import '/app/routes/app_router.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
