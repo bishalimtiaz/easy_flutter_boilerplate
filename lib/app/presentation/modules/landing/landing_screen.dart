@@ -16,23 +16,15 @@ class LandingScreen extends StatefulWidget {
   State<LandingScreen> createState() => _LandingScreenState();
 }
 
-class _LandingScreenState
-    extends ScreenState<LandingScreen, LandingController> {
-  @override
-  String? get routeName => AppRoutes.landing.name;
-
-  // @override
-  // Widget? get bottomNavigationBar => BottomNavBar(
-  //       controller: controller.navController,
-  //     );
-
+class _LandingScreenState extends ScreenState<LandingScreen, LandingController> {
   @override
   @override
   Widget build(BuildContext context) {
     return Observer(
       observable: controller.navController.selectedIndex,
       builder: (BuildContext context) {
-        return _getBottomNavbarScreen(controller.navController.selectedIndex.value);
+        return _getBottomNavbarScreen(
+            controller.navController.selectedIndex.value);
       },
     );
   }

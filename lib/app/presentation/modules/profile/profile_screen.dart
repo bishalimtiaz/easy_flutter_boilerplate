@@ -1,6 +1,7 @@
 import 'package:easy_flutter_boilerplate/app/core/base/screen_state.dart';
 import 'package:easy_flutter_boilerplate/app/routes/app_routes.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '/app/presentation/modules/profile/controllers/profile_controller.dart';
 import '/app/routes/app_router.dart';
 
@@ -11,19 +12,28 @@ class ProfileScreen extends StatefulWidget {
   State<ProfileScreen> createState() => _ProfileScreenState();
 }
 
-class _ProfileScreenState
-    extends ScreenState<ProfileScreen, ProfileController> {
-  @override
-  String? get routeName => AppRoutes.profile.name;
+class _ProfileScreenState extends ScreenState<ProfileScreen, ProfileController> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: GestureDetector(
-        onTap: () {
-          appRouter.pop();
-        },
-        child: const Text("Profile Screen"),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Profile"),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            context.pop();
+          },
+        ),
+        elevation: 4.0,
+      ),
+      body: Center(
+        child: GestureDetector(
+          onTap: () {
+            context.pushNamed(AppRoutes.order.name);
+          },
+          child: const Text("Profile Screen"),
+        ),
       ),
     );
   }

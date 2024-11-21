@@ -15,8 +15,8 @@ class AppService {
 
   static final GoRouterState? _currentState = appRouter.state;
 
-  static String? get currentRouteName => _currentState?.name;
-
+  static String? get currentRouteName =>
+      appRouter.routerDelegate.currentConfiguration.last.route.name;
   Future<void> start() async {
     DependencyProvider().provideDI();
   }

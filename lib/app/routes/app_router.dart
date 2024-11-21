@@ -1,3 +1,4 @@
+import 'package:easy_flutter_boilerplate/app/presentation/modules/profile/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:easy_flutter_boilerplate/app/core/base/screen_builder.dart';
@@ -8,7 +9,6 @@ import 'package:easy_flutter_boilerplate/app/presentation/modules/splash/splash_
 import 'package:easy_flutter_boilerplate/app/routes/app_routes.dart';
 import 'package:easy_flutter_boilerplate/app/routes/go_router_observer.dart';
 import 'package:easy_flutter_boilerplate/app/routes/navigation_helper.dart';
-
 
 final GoRouter appRouter = GoRouter(
   navigatorKey: NavigationHelper().parentNavigatorKey,
@@ -22,13 +22,13 @@ final GoRouter appRouter = GoRouter(
         return const SplashScreen();
       },
     ),
-    ScreenBuilder<LandingScreen>(
-      path: AppRoutes.landing.path,
-      name: AppRoutes.landing.name,
-      screenBuilder: (BuildContext context, GoRouterState state) {
-        return const LandingScreen();
-      },
-    ),
+    // ScreenBuilder<LandingScreen>(
+    //   path: AppRoutes.landing.path,
+    //   name: AppRoutes.landing.name,
+    //   screenBuilder: (BuildContext context, GoRouterState state) {
+    //     return const LandingScreen();
+    //   },
+    // ),
     ScreenBuilder<OrderScreen>(
       path: AppRoutes.order.path,
       name: AppRoutes.order.name,
@@ -41,6 +41,13 @@ final GoRouter appRouter = GoRouter(
       name: AppRoutes.home.name,
       screenBuilder: (BuildContext context, GoRouterState state) {
         return const HomeScreen();
+      },
+    ),
+    ScreenBuilder<HomeScreen>(
+      path: AppRoutes.profile.path,
+      name: AppRoutes.profile.name,
+      screenBuilder: (BuildContext context, GoRouterState state) {
+        return const ProfileScreen();
       },
     ),
   ],
