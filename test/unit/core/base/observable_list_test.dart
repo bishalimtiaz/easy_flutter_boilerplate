@@ -146,4 +146,17 @@ void main() {
       expect(list1 == list3, isFalse);
     });
   });
+
+  test('Throws RangeError when accessing out-of-bound index', () {
+    final ObservableList<int> list = ObservableList<int>.from([1, 2, 3]);
+    expect(() => list.replaceAt(3, 4), throwsRangeError);
+  });
+
+  /// performance test
+  test('Handles large list efficiently', () {
+    final ObservableList<int> list = ObservableList<int>.empty(growable: true);
+    list.addAll(List<int>.generate(10000, (index) => index));
+    expect(list.value.length, 10000);
+  });
+
 }

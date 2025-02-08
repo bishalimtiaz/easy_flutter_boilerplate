@@ -2,7 +2,9 @@ import 'package:easy_flutter_boilerplate/app/core/base/notifier.dart';
 import 'package:collection/collection.dart';
 
 /// Class representing an observable list that notifies listeners about changes.
-interface class ObservableList<T extends Object?> extends Notifier {
+interface class ObservableList<T extends Object?> extends Notifier<List<T>> {
+  final _equality = IterableEquality<T>();
+  
   ObservableList._(this._value);
 
   factory ObservableList.filled(int length, T fill, {bool growable = false}) {
@@ -41,16 +43,15 @@ interface class ObservableList<T extends Object?> extends Notifier {
   /// The internal list that stores the data.
   List<T> _value;
 
+  @override
+  List<T> get value => List<T>.unmodifiable(_value);
+
   set value(List<T> newValue) {
-    if (!const IterableEquality().equals(_value, newValue)) { // Added deep comparison
-      _value = List<T>.from(newValue);  // Make a copy to avoid unintended side effects
+    if (!_equality.equals(_value, newValue)) {
+      _value = List<T>.from(newValue);
       notifyListeners();
     }
   }
-
-  /// Returns a read-only view of the current list data.
-  @override
-  List<T> get value => List<T>.unmodifiable(_value);
 
   /// Adds an item to the list and notifies listeners.
   void add(T item) {
@@ -68,7 +69,7 @@ interface class ObservableList<T extends Object?> extends Notifier {
   ///and notifies listeners.
   /// Returns true if the item was found and removed, false otherwise.
   bool remove(T item) {
-    bool result = _value.remove(item);
+    final result = _value.remove(item);
     if (result) {
       notifyListeners();
     }
@@ -79,10 +80,8 @@ interface class ObservableList<T extends Object?> extends Notifier {
   /// listeners.
   /// Throws a RangeError if the index is out of bounds.
   T removeAt(int index) {
-    if (index < 0 || index >= _value.length) {
-      throw RangeError('Index ($index) out of bounds!');
-    }
-    T item = _value.removeAt(index);
+    _validateIndex(index);
+    final item = _value.removeAt(index);
     notifyListeners();
     return item;
   }
@@ -97,9 +96,7 @@ interface class ObservableList<T extends Object?> extends Notifier {
   /// listeners.
   /// Throws a RangeError if the index is out of bounds.
   void replaceAt(int index, T newItem) {
-    if (index < 0 || index >= _value.length) {
-      throw RangeError('Index ($index) out of bounds!');
-    }
+    _validateIndex(index);
     _value[index] = newItem;
     notifyListeners();
   }
@@ -107,9 +104,7 @@ interface class ObservableList<T extends Object?> extends Notifier {
   /// Updates a member of the item object at the specified index.
   /// Throws a RangeError if the index is out of bounds.
   void updateAt(int index, void Function(T?) updateFn) {
-    if (index < 0 || index >= _value.length) {
-      throw RangeError('Index ($index) out of bounds!');
-    }
+    _validateIndex(index);
     updateFn(_value[index]);
     notifyListeners();
   }
@@ -119,6 +114,12 @@ interface class ObservableList<T extends Object?> extends Notifier {
   void batchUpdate(void Function(List<T>) updates) {
     updates(_value);
     notifyListeners();
+  }
+
+  void _validateIndex(int index) {
+    if (index < 0 || index >= _value.length) {
+      throw RangeError('Index ($index) out of bounds!');
+    }
   }
 
   /// Compares this list with another object for equality.
@@ -131,12 +132,11 @@ interface class ObservableList<T extends Object?> extends Notifier {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-          other is ObservableList<T> &&
-              const IterableEquality<dynamic>().equals(_value, other._value);
+      other is ObservableList<T> &&
+          _equality.equals(_value, other._value);
 
   /// Calculates the hash code for this list based on the hash codes of its
   /// elements.
   @override
-  int get hashCode =>
-      _value.map((T t) => t.hashCode).reduce((int a, int b) => a ^ b);
+  int get hashCode => _equality.hash(_value);
 }

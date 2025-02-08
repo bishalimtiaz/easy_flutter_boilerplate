@@ -15,13 +15,14 @@ class LandingScreen extends StatefulWidget {
   State<LandingScreen> createState() => _LandingScreenState();
 }
 
-class _LandingScreenState extends ScreenState<LandingScreen, LandingController> {
+class _LandingScreenState
+    extends ScreenState<LandingScreen, LandingController> {
   @override
   @override
   Widget build(BuildContext context) {
-    return Observer(
+    return Observer<int>(
       observable: controller.navController.selectedIndex,
-      builder: (BuildContext context) {
+      builder: (BuildContext context, int value) {
         return _getBottomNavbarScreen(
             controller.navController.selectedIndex.value);
       },

@@ -1,6 +1,6 @@
 import 'package:easy_flutter_boilerplate/app/core/base/notifier.dart';
 
-interface class Observable<T extends Object?> extends Notifier {
+interface class Observable<T extends Object?> extends Notifier<T> {
   T _value;
 
   Observable(this._value);
@@ -19,4 +19,13 @@ interface class Observable<T extends Object?> extends Notifier {
     updateFn(_value);
     notifyListeners();
   }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Observable<T> &&
+          _value == other._value;
+
+  @override
+  int get hashCode => _value.hashCode;
 }

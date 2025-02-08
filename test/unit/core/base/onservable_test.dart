@@ -26,4 +26,11 @@ void main() {
       expect(newValue, 42);
     });
   });
+
+  test('Handles null value assignment gracefully', () {
+    final Observable<int?> observable = Observable<int?>(0);
+    observable.value = null;
+    expect(observable.value, null);
+  });
+
 }

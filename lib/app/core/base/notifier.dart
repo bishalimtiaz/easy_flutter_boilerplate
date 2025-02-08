@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
-typedef ObservableBuilder = Widget Function(
+typedef ObservableBuilder<T> = Widget Function(
   BuildContext context,
+  T value,
 );
 
-abstract class Notifier extends ChangeNotifier {
-  dynamic get value;
+abstract class Notifier<T extends Object?> extends ChangeNotifier {
+  T get value;
 }
