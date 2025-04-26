@@ -16,7 +16,7 @@ class _HomeScreenState extends ScreenState<HomeScreen, HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Home"),
+        title: const Text('Home'),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
@@ -30,7 +30,7 @@ class _HomeScreenState extends ScreenState<HomeScreen, HomeController> {
           onTap: () {
             context.pushNamed(AppRoutes.order.name);
           },
-          child: const Text("Home Screen"),
+          child: const Text('Home Screen'),
         ),
       ),
     );

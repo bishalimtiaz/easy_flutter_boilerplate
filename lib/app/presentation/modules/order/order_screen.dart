@@ -16,7 +16,7 @@ class _OrderScreenState extends ScreenState<OrderScreen, OrderController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Order"),
+        title: const Text('Order'),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
@@ -30,7 +30,7 @@ class _OrderScreenState extends ScreenState<OrderScreen, OrderController> {
           onTap: () {
             context.pushNamed(AppRoutes.profile.name);
           },
-          child: const Text("Order Screen"),
+          child: const Text('Order Screen'),
         ),
       ),
     );

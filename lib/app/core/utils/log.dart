@@ -28,8 +28,8 @@ class Log {
     );
     _logger = Logger(
       printer: PrettyPrinter(
-        methodCount: 0
-      )
+        methodCount: 0,
+      ),
     );
   }
 

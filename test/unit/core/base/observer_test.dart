@@ -197,7 +197,7 @@ void main() {
         (WidgetTester tester) async {
       final ObservableList<TestModel> observableList =
           ObservableList<TestModel>.from(
-              [TestModel('A', 1), TestModel('B', 2)]);
+              [TestModel('A', 1), TestModel('B', 2)],);
 
       await tester.pumpWidget(
         MaterialApp(

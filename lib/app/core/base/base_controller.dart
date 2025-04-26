@@ -9,12 +9,12 @@ class BaseController extends Disposable {
 
   @mustCallSuper
   void onInit() {
-    Log.print("$runtimeType Initialized");
+    Log.print('$runtimeType Initialized');
   }
 
   @override
   @mustCallSuper
   void onDispose() {
-    Log.print("$runtimeType Disposed");
+    Log.print('$runtimeType Disposed');
   }
 }

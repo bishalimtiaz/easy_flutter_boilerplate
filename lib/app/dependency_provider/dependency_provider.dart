@@ -29,7 +29,8 @@ class DependencyProvider {
   }
 
   void registerScreenController<T extends Object>(
-    T Function() controller) {
+    T Function() controller,
+  ) {
     final bool isSingleInstance = isCurrentRouteSingleInstance;
     if (isSingleInstance) {
       try {
@@ -37,7 +38,7 @@ class DependencyProvider {
           locator.registerLazySingleton(controller);
         }
       } catch (e) {
-        Log.error("Error registering Singleton Controller: $e");
+        Log.error('Error registering Singleton Controller: $e');
       }
     } else {
       try {
@@ -45,7 +46,7 @@ class DependencyProvider {
           locator.registerFactory(controller);
         }
       } catch (e) {
-        Log.error("Error registering Factory Controller: $e");
+        Log.error('Error registering Factory Controller: $e');
       }
     }
   }
@@ -56,7 +57,7 @@ class DependencyProvider {
         locator.unregister<T>();
       }
     } catch (e) {
-      Log.error("Error removing Screen Controller: $e");
+      Log.error('Error removing Screen Controller: $e');
     }
   }
 
@@ -70,7 +71,7 @@ class DependencyProvider {
 
   bool get isCurrentRouteSingleInstance {
     final currentRoute = AppService.currentRouteName;
-    Binding? binding = routeBindings[currentRoute]?.call();
+    final Binding? binding = routeBindings[currentRoute]?.call();
     if (binding != null && !binding.isSingleInstance) {
       return true;
     } else {

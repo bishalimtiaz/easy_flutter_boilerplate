@@ -4,12 +4,13 @@ import 'package:collection/collection.dart';
 /// Class representing an observable list that notifies listeners about changes.
 interface class ObservableList<T extends Object?> extends Notifier<List<T>> {
   final _equality = IterableEquality<T>();
-  
+
   ObservableList._(this._value);
 
   factory ObservableList.filled(int length, T fill, {bool growable = false}) {
     return ObservableList<T>._(
-        List<T>.filled(length, fill, growable: growable));
+      List<T>.filled(length, fill, growable: growable),
+    );
   }
 
   factory ObservableList.empty({bool growable = false}) {
@@ -25,15 +26,17 @@ interface class ObservableList<T extends Object?> extends Notifier<List<T>> {
   }
 
   factory ObservableList.generate(
-      int length,
-      T Function(int index) generator, {
-        bool growable = true,
-      }) {
-    return ObservableList<T>._(List<T>.generate(
-      length,
-      generator,
-      growable: growable,
-    ));
+    int length,
+    T Function(int index) generator, {
+    bool growable = true,
+  }) {
+    return ObservableList<T>._(
+      List<T>.generate(
+        length,
+        generator,
+        growable: growable,
+      ),
+    );
   }
 
   factory ObservableList.unmodifiable(Iterable<T> elements) {
@@ -132,8 +135,7 @@ interface class ObservableList<T extends Object?> extends Notifier<List<T>> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is ObservableList<T> &&
-          _equality.equals(_value, other._value);
+      other is ObservableList<T> && _equality.equals(_value, other._value);
 
   /// Calculates the hash code for this list based on the hash codes of its
   /// elements.

@@ -40,7 +40,6 @@ class AnimatedHelloPainter extends CustomPainter {
     }
   }
 
-
   Path _extractPartialPath(List<PathMetric> pathMetrics, double length) {
     final extractedPath = Path();
     double currentLength = 0.0;
@@ -49,11 +48,15 @@ class AnimatedHelloPainter extends CustomPainter {
       if (currentLength + metric.length > length) {
         final remainingLength = length - currentLength;
         extractedPath.addPath(
-            metric.extractPath(0.0, remainingLength), Offset.zero);
+          metric.extractPath(0.0, remainingLength),
+          Offset.zero,
+        );
         break;
       } else {
         extractedPath.addPath(
-            metric.extractPath(0.0, metric.length), Offset.zero);
+          metric.extractPath(0.0, metric.length),
+          Offset.zero,
+        );
         currentLength += metric.length;
       }
     }

@@ -17,7 +17,7 @@ class _ProfileScreenState extends ScreenState<ProfileScreen, ProfileController> 
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Profile"),
+        title: const Text('Profile'),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
@@ -31,7 +31,7 @@ class _ProfileScreenState extends ScreenState<ProfileScreen, ProfileController> 
           onTap: () {
             context.pushNamed(AppRoutes.order.name);
           },
-          child: const Text("Profile Screen"),
+          child: const Text('Profile Screen'),
         ),
       ),
     );

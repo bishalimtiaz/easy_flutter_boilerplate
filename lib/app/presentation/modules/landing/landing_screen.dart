@@ -24,7 +24,7 @@ class _LandingScreenState
       observable: controller.navController.selectedIndex,
       builder: (BuildContext context, int value) {
         return _getBottomNavbarScreen(
-            controller.navController.selectedIndex.value);
+            controller.navController.selectedIndex.value,);
       },
     );
   }

@@ -8,11 +8,6 @@ import '/app/core/base/base_state.dart';
 abstract class ScreenState<T extends StatefulWidget, C extends ScreenController>
     extends BaseState<T, C> {
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   @nonVirtual
   void dispose() {
     super.dispose();
