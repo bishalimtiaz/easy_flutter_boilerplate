@@ -48,3 +48,4 @@ app.*.map.json
 /.fvmrc
 .vscode
 
+/android/app/.cxx/
