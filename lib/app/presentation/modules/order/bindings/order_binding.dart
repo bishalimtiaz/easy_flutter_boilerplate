@@ -8,14 +8,13 @@ class OrderBinding extends Binding {
 
   @override
   Future<void> addDependencies() async {
-    DependencyProvider().provideScreenController<OrderController>(
+    DependencyProvider().registerScreenController<OrderController>(
       () => OrderController(),
-      isSingleInstance: isSingleInstance,
     );
   }
 
   @override
   Future<void> removeDependencies() async {
-    DependencyProvider().removeController<OrderController>();
+    DependencyProvider().unregisterDependency<OrderController>();
   }
 }

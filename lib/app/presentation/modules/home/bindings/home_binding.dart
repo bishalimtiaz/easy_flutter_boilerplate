@@ -3,20 +3,18 @@ import 'package:easy_flutter_boilerplate/app/presentation/modules/home/controlle
 import 'package:easy_flutter_boilerplate/app/routes/route_bindings/binding.dart';
 
 class HomeBinding extends Binding {
+  @override
+  bool get isSingleInstance => true;
 
   @override
-  // TODO: implement isSingleInstance
-  bool get isSingleInstance => true;
-  @override
   Future<void> addDependencies() async {
-    DependencyProvider().provideScreenController<HomeController>(
+    DependencyProvider().registerScreenController<HomeController>(
       () => HomeController(),
-      isSingleInstance: isSingleInstance,
     );
   }
 
   @override
   Future<void> removeDependencies() async {
-    DependencyProvider().removeController<HomeController>();
+    DependencyProvider().unregisterDependency<HomeController>();
   }
 }

@@ -5,14 +5,13 @@ import 'package:easy_flutter_boilerplate/app/routes/route_bindings/binding.dart'
 class SplashBinding extends Binding {
   @override
   Future<void> addDependencies() async {
-    DependencyProvider().provideScreenController<SplashController>(
+    DependencyProvider().registerScreenController<SplashController>(
       () => SplashController(),
-      isSingleInstance: isSingleInstance,
     );
   }
 
   @override
   Future<void> removeDependencies() async {
-    DependencyProvider().removeController<SplashController>();
+    DependencyProvider().unregisterDependency<SplashController>();
   }
 }

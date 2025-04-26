@@ -6,16 +6,16 @@ class ProfileBinding extends Binding {
   @override
   // TODO: implement isSingleInstance
   bool get isSingleInstance => true;
+
   @override
   Future<void> addDependencies() async {
-    DependencyProvider().provideScreenController<ProfileController>(
+    DependencyProvider().registerScreenController<ProfileController>(
       () => ProfileController(),
-      isSingleInstance: isSingleInstance,
     );
   }
 
   @override
   Future<void> removeDependencies() async {
-    DependencyProvider().removeController<ProfileController>();
+    DependencyProvider().unregisterDependency<ProfileController>();
   }
 }

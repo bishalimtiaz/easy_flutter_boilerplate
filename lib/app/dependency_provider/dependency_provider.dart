@@ -1,3 +1,4 @@
+import 'package:easy_flutter_boilerplate/app/core/services/app_service.dart';
 import 'package:easy_flutter_boilerplate/app/routes/route_bindings/binding.dart';
 import 'package:easy_flutter_boilerplate/app/routes/route_bindings/route_binding.dart';
 import 'package:get_it/get_it.dart';
@@ -21,16 +22,15 @@ class DependencyProvider {
     ServiceProvider().provide(locator);
   }
 
-  Future<void> provideSharedController<T extends Object>(
+  Future<void> registerSingletonDependency<T extends Object>(
     T Function() controller,
   ) async {
     locator.registerLazySingleton(controller);
   }
 
-  void provideScreenController<T extends Object>(
-    T Function() controller, {
-    required bool isSingleInstance,
-  }) {
+  void registerScreenController<T extends Object>(
+    T Function() controller) {
+    final bool isSingleInstance = isCurrentRouteSingleInstance;
     if (isSingleInstance) {
       try {
         if (!locator.isRegistered<T>()) {
@@ -50,7 +50,7 @@ class DependencyProvider {
     }
   }
 
-  void removeController<T extends Object>() {
+  void unregisterDependency<T extends Object>() {
     try {
       if (locator.isRegistered<T>()) {
         locator.unregister<T>();
@@ -60,7 +60,7 @@ class DependencyProvider {
     }
   }
 
-  void provideController<T extends Object>(
+  void registerFactoryDependency<T extends Object>(
     T Function() controller,
   ) {
     if (!locator.isRegistered<T>()) {
@@ -68,8 +68,9 @@ class DependencyProvider {
     }
   }
 
-  bool canDispose(String? routeName) {
-    Binding? binding = routeBindings[routeName]?.call();
+  bool get isCurrentRouteSingleInstance {
+    final currentRoute = AppService.currentRouteName;
+    Binding? binding = routeBindings[currentRoute]?.call();
     if (binding != null && !binding.isSingleInstance) {
       return true;
     } else {

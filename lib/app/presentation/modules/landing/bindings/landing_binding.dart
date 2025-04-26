@@ -8,9 +8,8 @@ import 'package:easy_flutter_boilerplate/app/routes/route_bindings/binding.dart'
 class LandingBinding extends Binding {
   @override
   Future<void> addDependencies() async {
-    DependencyProvider().provideScreenController<LandingController>(
+    DependencyProvider().registerScreenController<LandingController>(
       () => LandingController(),
-      isSingleInstance: isSingleInstance,
     );
     HomeBinding().addDependencies();
     OrderBinding().addDependencies();
@@ -19,7 +18,7 @@ class LandingBinding extends Binding {
 
   @override
   Future<void> removeDependencies() async {
-    DependencyProvider().removeController<LandingController>();
+    DependencyProvider().unregisterDependency<LandingController>();
 
     HomeBinding().removeDependencies();
     OrderBinding().removeDependencies();
