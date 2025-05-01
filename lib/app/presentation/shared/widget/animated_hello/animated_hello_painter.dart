@@ -1,6 +1,5 @@
 import 'dart:ui';
-
-import 'package:easy_flutter_boilerplate/app/presentation/widget/animated_hello/animated_hello_util.dart';
+import 'package:easy_flutter_boilerplate/app/presentation/shared/widget/animated_hello/animated_hello_util.dart';
 import 'package:flutter/material.dart';
 
 class AnimatedHelloPainter extends CustomPainter {

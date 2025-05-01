@@ -1,0 +1,13 @@
+const double dimen_0 = 0;
+const double dimen_2 = 2;
+const double dimen_4 = 4;
+const double dimen_5 = 5;
+const double dimen_6 = 6;
+const double dimen_8 = 8;
+const double dimen_10 = 10;
+const double dimen_12 = 12;
+const double dimen_14 = 14;
+const double dimen_20 = 20;
+const double dimen_26 = 26;
+const double dimen_42 = 42;
+const double dimen_50 = 50;

@@ -1,5 +1,5 @@
-import 'package:easy_flutter_boilerplate/app/presentation/widget/animated_hello/animated_hello_painter.dart';
-import 'package:easy_flutter_boilerplate/app/presentation/widget/animated_hello/animated_hello_util.dart';
+import 'package:easy_flutter_boilerplate/app/presentation/shared/widget/animated_hello/animated_hello_painter.dart';
+import 'package:easy_flutter_boilerplate/app/presentation/shared/widget/animated_hello/animated_hello_util.dart';
 import 'package:flutter/material.dart';
 
 class AnimatedHello extends StatefulWidget {

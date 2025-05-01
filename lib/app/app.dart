@@ -1,4 +1,4 @@
-import 'package:easy_flutter_boilerplate/app/core/styles/theme.dart';
+import 'package:easy_flutter_boilerplate/app/presentation/styles/theme.dart';
 import 'package:easy_flutter_boilerplate/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_flutter_boilerplate/app/routes/app_router.dart';

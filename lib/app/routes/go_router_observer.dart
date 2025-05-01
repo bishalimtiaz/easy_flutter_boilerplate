@@ -1,5 +1,5 @@
+import 'package:easy_flutter_boilerplate/app/utils/log.dart';
 import 'package:flutter/material.dart';
-import 'package:easy_flutter_boilerplate/app/core/utils/log.dart';
 import 'package:easy_flutter_boilerplate/app/routes/navigation_helper.dart';
 
 class GoRouterObserver extends NavigatorObserver {

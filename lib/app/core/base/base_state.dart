@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import '/app/core/base/base_controller.dart';
+import '/app/core/base/base_view_model.dart';
 import '/app/dependency_provider/dependency_provider.dart';
 
-abstract class BaseState<T extends StatefulWidget, C extends BaseController>
+abstract class BaseState<T extends StatefulWidget, C extends BaseViewModel>
     extends State<T> {
-  late final C controller;
+  late final C viewModel;
 
 
   @override
   void initState() {
-    controller = locator.get<C>();
+    viewModel = locator.get<C>();
 
     initializeListener();
     super.initState();

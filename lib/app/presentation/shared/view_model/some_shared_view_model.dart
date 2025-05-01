@@ -1,0 +1,1 @@
+//place shared viewModels that will be shared within modules or controllers

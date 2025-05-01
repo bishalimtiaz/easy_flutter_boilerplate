@@ -1,7 +1,6 @@
+import 'package:easy_flutter_boilerplate/app/presentation/styles/colors.dart';
+import 'package:easy_flutter_boilerplate/app/presentation/styles/text_styles.dart';
 import 'package:flutter/material.dart';
-import 'package:easy_flutter_boilerplate/app/core/styles/colors.dart';
-import 'package:easy_flutter_boilerplate/app/core/styles/text_styles.dart';
-
 final ThemeData themeData = ThemeData(
   colorScheme: ColorScheme.fromSeed(
     seedColor: primaryColor,

@@ -1,8 +1,8 @@
 import 'package:easy_flutter_boilerplate/app/core/services/app_service.dart';
 import 'package:easy_flutter_boilerplate/app/routes/route_bindings/binding.dart';
 import 'package:easy_flutter_boilerplate/app/routes/route_bindings/route_binding.dart';
+import 'package:easy_flutter_boilerplate/app/utils/log.dart';
 import 'package:get_it/get_it.dart';
-import 'package:easy_flutter_boilerplate/app/core/utils/log.dart';
 import 'package:easy_flutter_boilerplate/app/dependency_provider/data_source_provider.dart';
 import 'package:easy_flutter_boilerplate/app/dependency_provider/repository_provider.dart';
 import 'package:easy_flutter_boilerplate/app/dependency_provider/service_provider.dart';
@@ -23,30 +23,30 @@ class DependencyProvider {
   }
 
   Future<void> registerSingletonDependency<T extends Object>(
-    T Function() controller,
+    T Function() viewModel,
   ) async {
-    locator.registerLazySingleton(controller);
+    locator.registerLazySingleton(viewModel);
   }
 
-  void registerScreenController<T extends Object>(
-    T Function() controller,
+  void registerScreenViewModel<T extends Object>(
+    T Function() viewModel,
   ) {
     final bool isSingleInstance = isCurrentRouteSingleInstance;
     if (isSingleInstance) {
       try {
         if (!locator.isRegistered<T>()) {
-          locator.registerLazySingleton(controller);
+          locator.registerLazySingleton(viewModel);
         }
       } catch (e) {
-        Log.error('Error registering Singleton Controller: $e');
+        Log.error('Error registering Singleton viewModel: $e');
       }
     } else {
       try {
         if (!locator.isRegistered<T>()) {
-          locator.registerFactory(controller);
+          locator.registerFactory(viewModel);
         }
       } catch (e) {
-        Log.error('Error registering Factory Controller: $e');
+        Log.error('Error registering Factory viewModel: $e');
       }
     }
   }
@@ -57,15 +57,15 @@ class DependencyProvider {
         locator.unregister<T>();
       }
     } catch (e) {
-      Log.error('Error removing Screen Controller: $e');
+      Log.error('Error removing Screen viewModel: $e');
     }
   }
 
   void registerFactoryDependency<T extends Object>(
-    T Function() controller,
+    T Function() viewModel,
   ) {
     if (!locator.isRegistered<T>()) {
-      locator.registerFactory(controller);
+      locator.registerFactory(viewModel);
     }
   }
 

@@ -1,8 +1,8 @@
 import 'package:easy_flutter_boilerplate/app/core/base/observer.dart';
+import 'package:easy_flutter_boilerplate/app/presentation/modules/landing/view_model/landing_view_model.dart';
 import 'package:flutter/material.dart';
 import '/app/core/base/screen_state.dart';
 import '/app/presentation/modules/home/home_screen.dart';
-import '/app/presentation/modules/landing/controllers/landing_controller.dart';
 import '/app/presentation/modules/order/order_screen.dart';
 import '/app/presentation/modules/profile/profile_screen.dart';
 
@@ -16,15 +16,15 @@ class LandingScreen extends StatefulWidget {
 }
 
 class _LandingScreenState
-    extends ScreenState<LandingScreen, LandingController> {
+    extends ScreenState<LandingScreen, LandingViewModel> {
   @override
   @override
   Widget build(BuildContext context) {
     return Observer<int>(
-      observable: controller.navController.selectedIndex,
+      observable: viewModel.navViewModel.selectedIndex,
       builder: (BuildContext context, int value) {
         return _getBottomNavbarScreen(
-            controller.navController.selectedIndex.value,);
+            viewModel.navViewModel.selectedIndex.value,);
       },
     );
   }
