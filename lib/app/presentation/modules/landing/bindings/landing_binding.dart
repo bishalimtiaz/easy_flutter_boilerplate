@@ -1,4 +1,5 @@
-import 'package:easy_flutter_boilerplate/app/dependency_provider/dependency_provider.dart';
+import 'package:easy_flutter_boilerplate/app/di/dependency_provider/dependency_provider.dart'
+    show DependencyProvider;
 import 'package:easy_flutter_boilerplate/app/presentation/modules/home/bindings/home_binding.dart';
 import 'package:easy_flutter_boilerplate/app/presentation/modules/landing/view_model/landing_view_model.dart';
 import 'package:easy_flutter_boilerplate/app/presentation/modules/order/bindings/order_binding.dart';

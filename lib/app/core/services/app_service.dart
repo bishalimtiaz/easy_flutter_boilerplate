@@ -1,5 +1,5 @@
+import 'package:easy_flutter_boilerplate/app/di/di_initializer.dart';
 import 'package:flutter/material.dart';
-import 'package:easy_flutter_boilerplate/app/dependency_provider/dependency_provider.dart';
 import 'package:easy_flutter_boilerplate/app/routes/app_router.dart';
 
 class AppService {
@@ -17,7 +17,8 @@ class AppService {
 
   static String? get currentRouteName =>
       appRouter.routerDelegate.currentConfiguration.last.route.name;
+
   Future<void> start() async {
-    DependencyProvider().provideDI();
+    await DiInitializer().provideDI();
   }
 }

@@ -3,9 +3,6 @@ import 'package:easy_flutter_boilerplate/app/routes/route_bindings/binding.dart'
 import 'package:easy_flutter_boilerplate/app/routes/route_bindings/route_binding.dart';
 import 'package:easy_flutter_boilerplate/app/utils/log.dart';
 import 'package:get_it/get_it.dart';
-import 'package:easy_flutter_boilerplate/app/dependency_provider/data_source_provider.dart';
-import 'package:easy_flutter_boilerplate/app/dependency_provider/repository_provider.dart';
-import 'package:easy_flutter_boilerplate/app/dependency_provider/service_provider.dart';
 
 GetIt locator = GetIt.instance;
 
@@ -16,16 +13,10 @@ class DependencyProvider {
 
   factory DependencyProvider() => _instance;
 
-  Future<void> provideDI() async {
-    DataSourceProvider().provide(locator);
-    RepositoryProvider().provide(locator);
-    ServiceProvider().provide(locator);
-  }
-
   Future<void> registerSingletonDependency<T extends Object>(
-    T Function() viewModel,
+    T Function() factoryFunc,
   ) async {
-    locator.registerLazySingleton(viewModel);
+    locator.registerLazySingleton(factoryFunc);
   }
 
   void registerScreenViewModel<T extends Object>(
@@ -62,10 +53,10 @@ class DependencyProvider {
   }
 
   void registerFactoryDependency<T extends Object>(
-    T Function() viewModel,
+    T Function() factoryFunc,
   ) {
     if (!locator.isRegistered<T>()) {
-      locator.registerFactory(viewModel);
+      locator.registerFactory(factoryFunc);
     }
   }
 
