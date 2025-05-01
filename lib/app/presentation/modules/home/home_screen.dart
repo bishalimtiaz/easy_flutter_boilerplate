@@ -1,4 +1,5 @@
 import 'package:easy_flutter_boilerplate/app/core/base/screen_state.dart';
+import 'package:easy_flutter_boilerplate/app/core/utils/localization_ext.dart';
 import 'package:easy_flutter_boilerplate/app/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -30,7 +31,9 @@ class _HomeScreenState extends ScreenState<HomeScreen, HomeController> {
           onTap: () {
             context.pushNamed(AppRoutes.order.name);
           },
-          child: const Text('Home Screen'),
+          child: Text(
+            context.localized.home,
+          ),
         ),
       ),
     );
