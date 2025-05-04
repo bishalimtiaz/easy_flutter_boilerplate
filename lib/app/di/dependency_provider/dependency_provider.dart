@@ -22,7 +22,7 @@ class DependencyProvider {
   void registerScreenViewModel<T extends Object>(
     T Function() viewModel,
   ) {
-    final bool isSingleInstance = isCurrentRouteSingleInstance;
+    final bool isSingleInstance = _isCurrentRouteSingleInstance;
     if (isSingleInstance) {
       try {
         if (!locator.isRegistered<T>()) {
@@ -60,9 +60,18 @@ class DependencyProvider {
     }
   }
 
-  bool get isCurrentRouteSingleInstance {
+  bool get _isCurrentRouteSingleInstance {
     final currentRoute = AppService.currentRouteName;
     final Binding? binding = routeBindings[currentRoute]?.call();
+    if (binding != null && binding.isSingleInstance) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  bool canDispose(String? routeName) {
+    final Binding? binding = routeBindings[routeName]?.call();
     if (binding != null && !binding.isSingleInstance) {
       return true;
     } else {

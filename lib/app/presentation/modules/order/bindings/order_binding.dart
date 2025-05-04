@@ -3,8 +3,6 @@ import 'package:easy_flutter_boilerplate/app/presentation/modules/order/view_mod
 import 'package:easy_flutter_boilerplate/app/routes/route_bindings/binding.dart';
 
 class OrderBinding extends Binding {
-  // @override
-  // bool get isSingleInstance => true;
 
   @override
   Future<void> addDependencies() async {

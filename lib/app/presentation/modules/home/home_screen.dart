@@ -1,7 +1,7 @@
 import 'package:easy_flutter_boilerplate/app/core/base/screen_state.dart';
 import 'package:easy_flutter_boilerplate/app/presentation/modules/home/view_model/home_view_model.dart';
 import 'package:easy_flutter_boilerplate/app/routes/app_routes.dart';
-import 'package:easy_flutter_boilerplate/app/utils/localization_ext.dart';
+import 'package:easy_flutter_boilerplate/app/utils/context_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

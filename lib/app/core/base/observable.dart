@@ -15,8 +15,13 @@ interface class Observable<T extends Object?> extends Notifier<T> {
     }
   }
 
-  void updateValue(void Function(T) updateFn) {
+  void updateObj(void Function(T) updateFn) {
     updateFn(_value);
+    notifyListeners();
+  }
+
+  void forceUpdate(T newValue) {
+    _value = newValue;
     notifyListeners();
   }
 
